@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,9 +9,11 @@ import * as $ from 'jquery';
 })
 export class SplashComponent {
   userName: string
-  @Output() onClick = new EventEmitter<string>()
+
+  constructor(private router: Router) { }
 
   public clickedPlayButton() {
-    $('.center').animate({ opacity: 0}, () => this.onClick.emit(this.userName))
+    $('.center').animate({ opacity: 0}, () => 
+    this.router.navigate(['/gameboard'], {queryParams: {userName: this.userName}}))
   }
 }

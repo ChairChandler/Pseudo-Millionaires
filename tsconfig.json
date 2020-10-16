@@ -15,7 +15,6 @@
       "es2018",
       "dom"
     ],
-    "emitDecoratorMetadata": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

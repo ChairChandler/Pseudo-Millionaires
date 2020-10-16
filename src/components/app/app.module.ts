@@ -5,6 +5,12 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SplashModule } from 'src/components/splash/Splash.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AppRoutingModule } from './app.routing';
+import { NotFoundPageModule } from '../not-found/NotFoundPage.module';
+import { RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { QuestionsService } from 'src/services/Questions.service';
+import { GameboardModule } from '../gameboard/Gameboard.module';
 
 @NgModule({
   declarations: [
@@ -12,11 +18,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    RouterModule,
     BrowserAnimationsModule,
     FormsModule,
-    SplashModule
+    HttpClientModule,
+    SplashModule,
+    NotFoundPageModule,
+    GameboardModule,
   ],
-  providers: [],
+  providers: [HttpClient, QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
