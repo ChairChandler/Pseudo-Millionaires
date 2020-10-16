@@ -1,0 +1,37 @@
+.page {
+    z-index: -1;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #7F7FD5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
+
+.center {
+    width: 50%;
+    transform: translateX(25vw);
+}
+
+.container-rows {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    transform: translateY(10vh);
+    padding-bottom: 10px;
+    border: rgba(100, 100, 111, 0.2) 0.5px solid;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.container-rows > * {
+    margin: auto;
+}
+
+.logo {
+    width: 40vw;
+    height: 40vh;
+}
