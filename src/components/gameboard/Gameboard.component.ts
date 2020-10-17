@@ -17,7 +17,7 @@ export class GameboardComponent implements OnInit {
   userName: string;
   actualQuestion: QuestionModel;
   shuffledAnswers: {text: string, color: string}[]
-  question_no: number = 1;
+  question_no: number
   readonly max_question_no = 12;
 
   constructor(
@@ -26,6 +26,7 @@ export class GameboardComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.question_no = 1
     $('.page > *').hide().fadeIn();
     this.route.queryParams.subscribe(params => this.userName = params['userName'])
     this.prepareQuestion()
