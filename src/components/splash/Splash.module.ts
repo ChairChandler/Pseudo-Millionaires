@@ -5,6 +5,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginDialogModule } from '../login-dialog/login-dialog.module';
+import { LoginService } from 'src/services/Login.service';
 
 @NgModule({
   imports: [
@@ -12,7 +15,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    LoginDialogModule
   ],
   declarations: [SplashComponent],
   exports: [SplashComponent]

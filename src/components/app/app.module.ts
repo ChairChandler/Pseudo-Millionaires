@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { QuestionsService } from 'src/services/Questions.service';
 import { GameboardModule } from '../gameboard/Gameboard.module';
+import { LoginService } from 'src/services/Login.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { GameboardModule } from '../gameboard/Gameboard.module';
     NotFoundPageModule,
     GameboardModule,
   ],
-  providers: [HttpClient, QuestionsService],
+  providers: [HttpClient, QuestionsService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

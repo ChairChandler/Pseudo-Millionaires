@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionModel } from 'src/models/Question.model';
 import { QuestionsService } from 'src/services/Questions.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/portal';
+import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-Gameboard',
+  selector: 'mil-Gameboard',
   templateUrl: './Gameboard.component.html',
-  styleUrls: ['./Gameboard.component.css']
+  styleUrls: ['./Gameboard.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GameboardComponent implements OnInit {
   rewards: number[]
@@ -24,6 +26,7 @@ export class GameboardComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    $('.page > *').hide().fadeIn();
     this.route.queryParams.subscribe(params => this.userName = params['userName'])
     this.prepareQuestion()
     this.initRewards()
@@ -48,7 +51,7 @@ export class GameboardComponent implements OnInit {
   }
 
   onSelectAnswer(answer: string): void {
-    if(/*answer === this.actualQuestion.correct_answer*/1==1) {
+    if(answer === this.actualQuestion.correct_answer) {
       this.onCorrectdAnswer()
     } else if(this.actualQuestion.incorrect_answers.includes(answer)) {
       this.onInvalidAnswer()
@@ -61,12 +64,17 @@ export class GameboardComponent implements OnInit {
     if(++this.question_no == this.max_question_no) {
       this.showDialog(WinnerDialog)
     } else {
-      this.prepareQuestion()
+      const gb = this
+      $('.mat-grid-list').fadeOut('fast', function() {
+        gb.prepareQuestion()
+        $(this).fadeIn()
+      })
     }
   }
 
   private onInvalidAnswer(): void {
-    localStorage.setItem('reward', this.rewards[12-this.question_no].toString())
+    const id = 13-this.question_no
+    localStorage.setItem('reward', (id < 12 ? this.rewards[id] : 0).toString())
     this.showDialog(LoserDialog)
   }
 
@@ -107,7 +115,7 @@ export class GameboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.questionsService.fetchQuestions(this.max_question_no).then(() =>
-        window.location.reload()
+        this.ngOnInit()
       )
     });
   }

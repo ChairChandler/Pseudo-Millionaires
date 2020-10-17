@@ -47,10 +47,6 @@
     text-align: center;
 }
 
-.row {
-    flex-wrap: nowrap;
-}
-
 #selected_reward {
     color: lightgreen;
     font-size: 2rem;

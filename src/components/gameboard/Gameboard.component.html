@@ -1,20 +1,20 @@
 <div class="page">
   <div class="container margin-top-container">
     <div class="row">
-      <div class="col-2">
-        <div class="container-rows container">
-          <div class="row">
-            <div class="col">Player:</div>
-            <div class="col-2">{{this.userName}}</div>
-          </div>
-          <div class="row">
-            <div class="col">Question No:</div> 
-            <div class="col-2">{{this.question_no}}</div>
+      <div class="col-3">
+        <div class="container-rows">
+          <div class="container">
+            <div class="row">
+              <div class="col">Player:</div>
+              <div class="col">{{this.userName}}</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="offset-10 col-2">
+      <div class="col-6"></div> <!--we can of course add offset class to the next column, however for some unknown reason there is a problem with responsive-->
+
+      <div class="col-3">
         <div class="container-rows">
           <div *ngFor="let r of rewards; let i = index">
             <div *ngIf="i == (12-question_no); else notSelectedReward" id="selected_reward">{{r}}</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Login</mat-label>
+        <input matInput type="text" [(ngModel)]="login">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="password">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button mat-button [disabled]="!login?.length || !password?.length" (click)="this.clickedLogin()">Login</button>
+    </div>
+  </div>
+</div>
