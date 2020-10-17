@@ -1,15 +1,53 @@
-{{this.userName}}
-<br>
-{{this.question_no}}
-<br>
-{{this.actualQuestion.question}}
+<div class="page">
+  <div class="container margin-top-container">
+    <div class="row">
+      <div class="col-2">
+        <div class="container-rows container">
+          <div class="row">
+            <div class="col">Player:</div>
+            <div class="col-2">{{this.userName}}</div>
+          </div>
+          <div class="row">
+            <div class="col">Question No:</div> 
+            <div class="col-2">{{this.question_no}}</div>
+          </div>
+        </div>
+      </div>
 
-<mat-grid-list cols="4" rowHeight="100px">
-  <mat-grid-tile
-      *ngFor="let answer of shuffledAnswers"
-      [colspan]=1
-      [rowspan]=1
-      [style.background]="answer.color">
-    {{answer.text}}
-  </mat-grid-tile>
-</mat-grid-list>
+      <div class="offset-10 col-2">
+        <div class="container-rows">
+          <div *ngFor="let r of rewards; let i = index">
+            <div *ngIf="i == (12-question_no); else notSelectedReward" id="selected_reward">{{r}}</div>
+            <ng-template #notSelectedReward>{{r}}</ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row bottom">
+      <div class="col-8 offset-2">
+        <div id="question_text" class="container-rows">
+          {{this.actualQuestion.question}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row bottom">
+      <div class="col-8 offset-2">
+        <div class="container-rows">
+          <mat-grid-list cols="2" rowHeight="100px">
+            <mat-grid-tile
+                *ngFor="let answer of shuffledAnswers"
+                [colspan]=1
+                [rowspan]=1
+                [style.background]="answer.color">
+              <div class="map-area" (click)="onSelectAnswer(answer.text)">
+                {{answer.text}}
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

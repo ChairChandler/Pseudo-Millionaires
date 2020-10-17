@@ -32,6 +32,16 @@ export class QuestionsService {
         )
     }
 
+    private parseQuestions(questions: QuestionModel[]): QuestionModel[] {
+        const replaceIfNessesary = txt => txt.replace(/[^a-zA-Z0-9 _-]+.*;/, '')
+        return questions.map(q => {
+            q.question = replaceIfNessesary(q.question)
+            q.correct_answer = replaceIfNessesary(q.correct_answer)
+            q.incorrect_answers = q.incorrect_answers.map(replaceIfNessesary)
+            return q;
+        })
+    }
+
     //obviously it can returns array of questions
     public async fetchQuestions(amount: number): Promise<void> {
         try {
@@ -45,7 +55,8 @@ export class QuestionsService {
                     if(response['response_code'] as number) {
                         reject(`Error during fetch url: ${url}, status code: ${response['status_code']}`)
                     } else {
-                        const questions = this.sortQuestions(response['results'] as QuestionModel[])
+                        let questions = this.sortQuestions(response['results'] as QuestionModel[])
+                        questions = this.parseQuestions(questions)
                         for(const [indx, obj] of Object.entries(questions)) {
                             localStorage.setItem(`question_${indx}`, JSON.stringify(obj))
                         }

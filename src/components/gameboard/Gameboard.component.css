@@ -8,3 +8,50 @@
     background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.map-area {
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items:center;
+    border: 1px solid black;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.center {
+    width: 50%;
+    transform: translate(25vw, 50vh);
+}
+
+.margin-top-container {
+    margin-top: 5vh;
+}
+
+.bottom {
+    transform: translateY(20vh);
+}
+
+.container-rows {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    padding: 10px;
+    border: rgba(100, 100, 111, 0.2) 0.5px solid;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#question_text {
+    text-align: center;
+}
+
+.row {
+    flex-wrap: nowrap;
+}
+
+#selected_reward {
+    color: lightgreen;
+    font-size: 2rem;
+}
